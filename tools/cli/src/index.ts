@@ -21,7 +21,7 @@ import { AssistantEngine } from '../../../packages/core/src/engines/assistant.ts
 import { PortabilityEngine } from '../../../packages/core/src/engines/portability.ts';
 import { DiscoveryEngine } from '../../../packages/core/src/engines/discovery.ts';
 import { SyncRunner, adapterFor } from '../../../packages/core/src/connectors/sync.ts';
-import { CONNECTORS } from '../../../packages/core/src/connectors/registry.ts';
+import { CONNECTORS, ROADMAP_CONNECTORS } from '../../../packages/core/src/connectors/registry.ts';
 import { buildContextPackage, renderContextPackageMarkdown } from '../../../packages/core/src/ai/context-package.ts';
 import { encryptSecret } from '../../../packages/core/src/security/secrets.ts';
 import { isExcludedPath } from '../../../packages/core/src/security/redact.ts';
@@ -135,6 +135,23 @@ async function main(): Promise<void> {
 
   const dbPath = flagStr(args, 'db', process.env.AI_BRAIN_DB ?? DEFAULT_DB);
   const asJson = args.flags.json === true;
+
+  // Informational commands that describe the software rather than a brain.
+  // These must work before there is an account: someone evaluating AI BRAIN
+  // should be able to see what the connectors actually do first.
+  if (args.command === 'connectors') {
+    for (const c of Object.values(CONNECTORS)) {
+      out(`${c.label} (${c.key})`);
+      out(`  status:      ${c.status}`);
+      out(`  mode:        ${c.mode}`);
+      out(`  can:         ${c.capabilities.join(', ')}`);
+      out(`  limitations: ${c.limitations}`);
+      out('');
+    }
+    out('Not available in this release:');
+    for (const r of ROADMAP_CONNECTORS) out(`  ${r.label} — ${r.why}`);
+    return;
+  }
 
   if (args.command === 'migrate') {
     const db = openDb({ path: dbPath });
@@ -547,18 +564,6 @@ async function main(): Promise<void> {
           const saved = store.brainConfig.save(next);
           for (const key of saved.modules) store.modules.setEnabled(workspaceId, key, true);
           out(`imported configuration as version ${saved.version}. Previous versions are kept.`);
-        }
-        break;
-      }
-
-      case 'connectors': {
-        for (const c of Object.values(CONNECTORS)) {
-          out(`${c.label} (${c.key})`);
-          out(`  status:      ${c.status}`);
-          out(`  mode:        ${c.mode}`);
-          out(`  can:         ${c.capabilities.join(', ')}`);
-          out(`  limitations: ${c.limitations}`);
-          out('');
         }
         break;
       }

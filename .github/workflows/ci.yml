@@ -97,8 +97,20 @@ jobs:
         run: |
           set -euo pipefail
           node tools/cli/src/index.ts migrate
-          node tools/cli/src/index.ts connectors | grep -q "GitHub (github)"
           node tools/cli/src/index.ts help | grep -q "AI BRAIN command line"
+
+          # Informational commands must work before any account exists.
+          node tools/cli/src/index.ts connectors | grep -q "GitHub (github)"
+          node tools/cli/src/index.ts connectors | grep -q "Not available in this release"
+
+          # Commands that need an account must say so, not crash.
+          if node tools/cli/src/index.ts status 2>&1 | grep -q "Run \`brain setup\`"; then
+            echo "account-requiring commands explain themselves"
+          else
+            echo "::error::`brain status` did not give the expected setup hint"
+            exit 1
+          fi
+
           echo "fresh install verified"
         env:
           AI_BRAIN_DB: ./data/ci.db
