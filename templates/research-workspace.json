@@ -1,0 +1,102 @@
+{
+  "$schema": "https://ai-brain.dev/schema/brain.config.v1.json",
+  "fileVersion": 1,
+  "exportedAt": "2026-10-28T00:00:00.000Z",
+  "profile": "research",
+  "displayName": "Research Workspace",
+  "intents": [],
+  "modules": [
+    "projects",
+    "knowledge",
+    "tasks",
+    "goals",
+    "decisions",
+    "reports",
+    "assistant",
+    "integrations"
+  ],
+  "knowledgeCategories": [
+    "Literature",
+    "Sources",
+    "Hypotheses",
+    "Experiments",
+    "Evidence",
+    "Findings",
+    "Open questions",
+    "Dead ends"
+  ],
+  "goalHierarchy": [
+    {
+      "title": "Answer the central research question",
+      "horizon": "long-term"
+    },
+    {
+      "title": "Close this quarter open questions",
+      "horizon": "quarter"
+    }
+  ],
+  "projectTaxonomy": [
+    "Research project",
+    "Literature review",
+    "Experiment",
+    "Paper",
+    "Dataset"
+  ],
+  "preferredMetrics": [
+    "sources_reviewed",
+    "experiments_run",
+    "findings_recorded"
+  ],
+  "reportingCadence": "monthly",
+  "recommendedConnectors": [],
+  "privacy": {
+    "excludedCategories": [],
+    "excludedPaths": [],
+    "allowRemoteAi": false,
+    "allowFileContentImport": true,
+    "sourceRetentionDays": 0
+  },
+  "dashboardLayout": {
+    "columns": 12,
+    "widgets": [
+      {
+        "key": "priorities",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "active-projects",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "knowledge-updates",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "goals",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "risks",
+        "span": 4,
+        "visible": true
+      },
+      {
+        "key": "recent-activity",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "weekly-progress",
+        "span": 6,
+        "visible": true
+      }
+    ]
+  },
+  "assistantInstructions": "I do research. Distinguish a hypothesis from a finding every single time, and tell me when two records in my own notes disagree.",
+  "automationLevel": "review",
+  "workingStyle": "deep-work"
+}

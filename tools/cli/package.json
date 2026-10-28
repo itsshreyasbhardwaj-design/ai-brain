@@ -1,0 +1,10 @@
+{
+  "name": "@ai-brain/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Command line interface for AI BRAIN. Zero dependencies.",
+  "license": "Apache-2.0",
+  "bin": { "brain": "./src/index.ts" },
+  "dependencies": {}
+}

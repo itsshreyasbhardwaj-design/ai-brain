@@ -1,0 +1,59 @@
+name: Bug report
+description: Something does not work the way it says it does
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. If this is a security issue, please use the
+        Security tab instead so it can be fixed before it is public.
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: And what you expected instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Connect GitHub with an allowlist of owner/repo
+        2. Run a sync
+        3. The review queue is empty but the stats say 3 queued
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+    validations:
+      required: true
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where
+      options: [Web app, CLI, MCP server, Connector sync, Install or setup, Not sure]
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Output of `node -v`, `pnpm -v`, and your OS.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output
+      description: Console errors, terminal output, or the sync run detail from the integrations page. Please redact tokens.
+      render: shell

@@ -1,0 +1,10 @@
+{
+  "name": "@ai-brain/mcp-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "MCP server exposing one AI BRAIN workspace to compatible AI assistants. Zero dependencies.",
+  "license": "Apache-2.0",
+  "bin": { "ai-brain-mcp": "./src/index.ts" },
+  "dependencies": {}
+}

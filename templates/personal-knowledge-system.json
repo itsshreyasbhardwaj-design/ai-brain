@@ -1,0 +1,95 @@
+{
+  "$schema": "https://ai-brain.dev/schema/brain.config.v1.json",
+  "fileVersion": 1,
+  "exportedAt": "2026-10-28T00:00:00.000Z",
+  "profile": "personal",
+  "displayName": "Personal Knowledge System",
+  "intents": [],
+  "modules": [
+    "projects",
+    "knowledge",
+    "tasks",
+    "goals",
+    "decisions",
+    "productivity",
+    "reports",
+    "assistant"
+  ],
+  "knowledgeCategories": [
+    "Notes",
+    "Decisions",
+    "Important documents",
+    "Learning",
+    "Home",
+    "Health",
+    "Finance"
+  ],
+  "goalHierarchy": [
+    {
+      "title": "Keep what matters from slipping",
+      "horizon": "quarter"
+    },
+    {
+      "title": "Build one habit that sticks",
+      "horizon": "year"
+    }
+  ],
+  "projectTaxonomy": [
+    "Personal project",
+    "Commitment",
+    "Household",
+    "Learning",
+    "Admin"
+  ],
+  "preferredMetrics": [
+    "habit_streak",
+    "tasks_completed"
+  ],
+  "reportingCadence": "weekly",
+  "recommendedConnectors": [],
+  "privacy": {
+    "excludedCategories": [],
+    "excludedPaths": [],
+    "allowRemoteAi": false,
+    "allowFileContentImport": true,
+    "sourceRetentionDays": 0
+  },
+  "dashboardLayout": {
+    "columns": 12,
+    "widgets": [
+      {
+        "key": "priorities",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "personal-goals",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "upcoming-commitments",
+        "span": 4,
+        "visible": true
+      },
+      {
+        "key": "knowledge-updates",
+        "span": 4,
+        "visible": true
+      },
+      {
+        "key": "decisions",
+        "span": 4,
+        "visible": true
+      },
+      {
+        "key": "weekly-progress",
+        "span": 6,
+        "visible": true
+      }
+    ]
+  },
+  "assistantInstructions": "This is my own life admin. Keep it calm and short. Never imply I should be doing more.",
+  "automationLevel": "manual",
+  "workingStyle": "balanced"
+}

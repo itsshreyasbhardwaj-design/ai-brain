@@ -1,0 +1,31 @@
+{
+  "name": "ai-brain",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "An open-source, local-first personal intelligence operating system.",
+  "license": "Apache-2.0",
+  "packageManager": "pnpm@11.17.0",
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "pnpm --filter @ai-brain/web dev",
+    "build": "pnpm --filter @ai-brain/web build",
+    "start": "pnpm --filter @ai-brain/web start",
+    "test": "node --test \"packages/core/test/**/*.test.ts\"",
+    "test:perf": "AI_BRAIN_PERF=1 node --test \"packages/core/test/perf.test.ts\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "node scripts/lint.mjs",
+    "brain": "node tools/cli/src/index.ts",
+    "mcp": "node tools/mcp-server/src/index.ts",
+    "db:migrate": "node tools/cli/src/index.ts migrate",
+    "db:reset": "node tools/cli/src/index.ts reset --yes",
+    "verify": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "typescript": "5.9.3"
+  }
+}

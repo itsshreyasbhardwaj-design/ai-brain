@@ -1,0 +1,45 @@
+# AI BRAIN — self-hosted.
+#
+# NOTE: this file has not been executed. The machine the project was developed
+# on has no Docker. See docs/self-hosting.md for what was verified.
+#
+#   cp .env.example .env     # and set APP_SECRET
+#   docker compose up --build
+#
+# There is deliberately no database service: AI BRAIN uses the SQLite build
+# that ships inside Node, so the only persistent state is the ./data volume.
+
+services:
+  ai-brain:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ai-brain:local
+    container_name: ai-brain
+    restart: unless-stopped
+    ports:
+      - '${PORT:-3000}:3000'
+    environment:
+      NODE_ENV: production
+      AI_BRAIN_DB: /data/brain.db
+      # Required. Generate with:
+      #   node -e "console.log(require('node:crypto').randomBytes(32).toString('base64url'))"
+      APP_SECRET: ${APP_SECRET:?APP_SECRET must be set in .env}
+      # Optional. The default is no provider, no network, no cost.
+      AI_PROVIDER: ${AI_PROVIDER:-none}
+      AI_MODEL: ${AI_MODEL:-}
+      AI_API_KEY: ${AI_API_KEY:-}
+      AI_BASE_URL: ${AI_BASE_URL:-}
+      AI_MONTHLY_BUDGET_MINOR: ${AI_MONTHLY_BUDGET_MINOR:-0}
+      GITHUB_WEBHOOK_SECRET: ${GITHUB_WEBHOOK_SECRET:-}
+    volumes:
+      # Your entire brain is this directory. Back it up by copying it.
+      - ./data:/data
+    healthcheck:
+      test: ['CMD', 'node', '-e', "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    security_opt:
+      - no-new-privileges:true

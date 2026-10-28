@@ -1,0 +1,26 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+  - 'tools/*'
+
+# pnpm refuses to run dependency build scripts unless they are approved here.
+# Both of these are native build steps for the web app's toolchain:
+#   @tailwindcss/oxide — Tailwind v4's native CSS engine
+#   sharp              — Next.js image optimisation in production
+# The core package, the CLI and the MCP server have no dependencies at all, so
+# nothing in this list affects them.
+#
+# `allowBuilds` is the pnpm 11 key; `onlyBuiltDependencies` is kept so the
+# repository still installs cleanly on pnpm 10.
+allowBuilds:
+  '@tailwindcss/oxide': true
+  sharp: true
+
+onlyBuiltDependencies:
+  - '@tailwindcss/oxide'
+  - sharp
+
+# These were previously in .npmrc, which npm also reads and warns about since
+# they are pnpm-only settings. pnpm reads them from here.
+autoInstallPeers: true
+strictPeerDependencies: false

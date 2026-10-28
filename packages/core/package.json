@@ -1,0 +1,18 @@
+{
+  "name": "@ai-brain/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Domain model, storage, and intelligence engines for AI BRAIN. Zero runtime dependencies.",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./src/index.ts",
+    "./domain": "./src/domain/index.ts",
+    "./db": "./src/db/index.ts",
+    "./engines": "./src/engines/index.ts",
+    "./connectors": "./src/connectors/index.ts",
+    "./ai": "./src/ai/index.ts",
+    "./security": "./src/security/index.ts"
+  },
+  "dependencies": {}
+}

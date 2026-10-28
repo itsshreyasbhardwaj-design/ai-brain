@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/itsshreyasbhardwaj-design/ai-brain/security/advisories/new
+    about: Please report privately so it can be fixed before it is public.
+  - name: Questions and ideas
+    url: https://github.com/itsshreyasbhardwaj-design/ai-brain/discussions
+    about: For anything that is not a bug or a concrete request.

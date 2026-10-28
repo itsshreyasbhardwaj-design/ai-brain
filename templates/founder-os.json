@@ -1,0 +1,121 @@
+{
+  "$schema": "https://ai-brain.dev/schema/brain.config.v1.json",
+  "fileVersion": 1,
+  "exportedAt": "2026-10-28T00:00:00.000Z",
+  "profile": "founder",
+  "displayName": "Founder OS",
+  "intents": [],
+  "modules": [
+    "projects",
+    "knowledge",
+    "tasks",
+    "goals",
+    "decisions",
+    "business",
+    "resources",
+    "reports",
+    "assistant",
+    "integrations"
+  ],
+  "knowledgeCategories": [
+    "Strategy",
+    "Customers",
+    "Market",
+    "Operations",
+    "Fundraising",
+    "Hiring",
+    "Metrics",
+    "Lessons learned"
+  ],
+  "goalHierarchy": [
+    {
+      "title": "Reach sustainable operations",
+      "horizon": "long-term"
+    },
+    {
+      "title": "Hit this quarter revenue target",
+      "horizon": "quarter"
+    }
+  ],
+  "projectTaxonomy": [
+    "Company",
+    "Product",
+    "Growth initiative",
+    "Operations",
+    "Fundraise"
+  ],
+  "preferredMetrics": [
+    "revenue",
+    "active_customers",
+    "burn",
+    "runway_months",
+    "pipeline_value"
+  ],
+  "reportingCadence": "weekly",
+  "recommendedConnectors": [],
+  "privacy": {
+    "excludedCategories": [],
+    "excludedPaths": [],
+    "allowRemoteAi": false,
+    "allowFileContentImport": true,
+    "sourceRetentionDays": 0
+  },
+  "dashboardLayout": {
+    "columns": 12,
+    "widgets": [
+      {
+        "key": "priorities",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "business-summary",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "active-projects",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "resource-usage",
+        "span": 4,
+        "visible": true
+      },
+      {
+        "key": "decisions",
+        "span": 4,
+        "visible": true
+      },
+      {
+        "key": "risks",
+        "span": 4,
+        "visible": true
+      },
+      {
+        "key": "goals",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "recent-activity",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "weekly-progress",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "ai-recommendations",
+        "span": 6,
+        "visible": true
+      }
+    ]
+  },
+  "assistantInstructions": "I run a business. Separate what is verified from what I assume. When I ask how something is going, tell me what the records actually show, including when they show nothing.",
+  "automationLevel": "review",
+  "workingStyle": "balanced"
+}

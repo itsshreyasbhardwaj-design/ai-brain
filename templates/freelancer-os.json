@@ -1,0 +1,108 @@
+{
+  "$schema": "https://ai-brain.dev/schema/brain.config.v1.json",
+  "fileVersion": 1,
+  "exportedAt": "2026-10-28T00:00:00.000Z",
+  "profile": "freelancer",
+  "displayName": "Freelancer OS",
+  "intents": [],
+  "modules": [
+    "projects",
+    "knowledge",
+    "tasks",
+    "goals",
+    "decisions",
+    "resources",
+    "calendar",
+    "reports",
+    "assistant",
+    "integrations"
+  ],
+  "knowledgeCategories": [
+    "Clients",
+    "Contracts",
+    "Deliverables",
+    "Rates & scope",
+    "Process",
+    "Templates",
+    "Scope creep log"
+  ],
+  "goalHierarchy": [
+    {
+      "title": "Fill next quarter capacity",
+      "horizon": "quarter"
+    },
+    {
+      "title": "Stop undercharging",
+      "horizon": "quarter"
+    }
+  ],
+  "projectTaxonomy": [
+    "Client engagement",
+    "Retainer",
+    "Fixed-scope project",
+    "Internal"
+  ],
+  "preferredMetrics": [
+    "billable_minutes",
+    "invoiced_amount",
+    "outstanding_amount",
+    "active_clients"
+  ],
+  "reportingCadence": "weekly",
+  "recommendedConnectors": [],
+  "privacy": {
+    "excludedCategories": [],
+    "excludedPaths": [],
+    "allowRemoteAi": false,
+    "allowFileContentImport": true,
+    "sourceRetentionDays": 0
+  },
+  "dashboardLayout": {
+    "columns": 12,
+    "widgets": [
+      {
+        "key": "priorities",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "upcoming-commitments",
+        "span": 4,
+        "visible": true
+      },
+      {
+        "key": "active-projects",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "financial-summary",
+        "span": 4,
+        "visible": true
+      },
+      {
+        "key": "resource-usage",
+        "span": 4,
+        "visible": true
+      },
+      {
+        "key": "risks",
+        "span": 4,
+        "visible": true
+      },
+      {
+        "key": "weekly-progress",
+        "span": 6,
+        "visible": true
+      },
+      {
+        "key": "ai-recommendations",
+        "span": 6,
+        "visible": true
+      }
+    ]
+  },
+  "assistantInstructions": "I work for several clients at once. Be precise about deadlines and money, and always say which client a figure belongs to.",
+  "automationLevel": "review",
+  "workingStyle": "balanced"
+}

@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": { "types": ["node"] },
+  "include": ["packages/core/src/**/*.ts", "packages/core/test/**/*.ts", "tools/**/src/**/*.ts"],
+  "exclude": ["node_modules", "apps/web"]
+}

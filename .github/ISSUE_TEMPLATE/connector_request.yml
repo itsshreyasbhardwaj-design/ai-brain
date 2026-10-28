@@ -1,0 +1,34 @@
+name: Connector request
+description: A source AI BRAIN should be able to read
+labels: [connector]
+body:
+  - type: input
+    id: service
+    attributes:
+      label: Which service
+    validations:
+      required: true
+
+  - type: textarea
+    id: api
+    attributes:
+      label: Link to its API documentation
+      description: Specifically, the endpoints that list projects and recent activity.
+    validations:
+      required: true
+
+  - type: input
+    id: identifier
+    attributes:
+      label: Does it have a stable identifier that survives a rename?
+      description: If not, say so — it changes how the connector has to behave.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: auth
+    attributes:
+      label: Authentication
+      options: [Personal access token, OAuth app, API key, Local filesystem, Manual export only, Not sure]
+    validations:
+      required: true
