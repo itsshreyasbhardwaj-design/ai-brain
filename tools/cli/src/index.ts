@@ -32,6 +32,19 @@ import type { ConnectorKey, TokenScope } from '../../../packages/core/src/domain
 
 const DEFAULT_DB = `${process.env.HOME ?? '.'}/.ai-brain/brain.db`;
 
+/**
+ * Exit quietly when the reader goes away.
+ *
+ * `brain connectors | head -5` or `… | grep -q x` closes stdout as soon as the
+ * reader has what it needs. Without this, Node turns that into an unhandled
+ * EPIPE and a stack trace, which looks like a crash in a command that actually
+ * did its job.
+ */
+process.stdout.on('error', (err: NodeJS.ErrnoException) => {
+  if (err.code === 'EPIPE') process.exit(0);
+  throw err;
+});
+
 interface Args {
   command: string;
   positional: string[];

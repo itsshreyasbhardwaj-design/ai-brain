@@ -103,13 +103,12 @@ jobs:
           node tools/cli/src/index.ts connectors | grep -q "GitHub (github)"
           node tools/cli/src/index.ts connectors | grep -q "Not available in this release"
 
-          # Commands that need an account must say so, not crash.
-          if node tools/cli/src/index.ts status 2>&1 | grep -q "Run \`brain setup\`"; then
-            echo "account-requiring commands explain themselves"
-          else
-            echo "::error::`brain status` did not give the expected setup hint"
-            exit 1
-          fi
+          # Commands that need an account must explain themselves, not crash.
+          # The CLI exits 1 here by design, so capture the output rather than
+          # piping it — `set -o pipefail` would otherwise fail the step on the
+          # very exit code being asserted.
+          status_output=$(node tools/cli/src/index.ts status 2>&1 || true)
+          echo "$status_output" | grep -q "no account yet"
 
           echo "fresh install verified"
         env:

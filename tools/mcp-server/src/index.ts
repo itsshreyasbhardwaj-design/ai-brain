@@ -522,6 +522,13 @@ function log(message: string): void {
 }
 
 async function main(): Promise<void> {
+  // The client disconnecting closes stdout. That is a normal shutdown, not a
+  // crash, so it should not produce a stack trace.
+  process.stdout.on('error', (err: NodeJS.ErrnoException) => {
+    if (err.code === 'EPIPE') process.exit(0);
+    throw err;
+  });
+
   const dbPath = env('AI_BRAIN_DB', `${process.env.HOME ?? '.'}/.ai-brain/brain.db`);
   const rawToken = env('AI_BRAIN_TOKEN');
 
