@@ -110,6 +110,24 @@ resources in one workspace:
 
 Reproduce with `pnpm test:perf`.
 
+### Bugs this process caught
+
+Worth recording, because they are the argument for the verification steps that
+found them:
+
+| Found by | Bug |
+|---|---|
+| First test run | A placeholder `sourceId` from a connector violated a foreign key. Discovery now normalises it once, so no caller can create a dangling reference. |
+| Discovery test | The deduplication pre-filter only matched exact normalised names, which made the name-similarity rule unreachable — a renamed project would have silently become a duplicate. |
+| Discovery test | `ingest` returned a stale project object, so a caller never saw the parent link that `linkRelations` had just written. |
+| Knowledge test | `subjectOf` stripped polarity word by word, so "no longer" left "longer" behind and contradiction detection could never match. |
+| Assistant test | Three documented questions did not match their own intents (plural forms). A test now asserts every advertised question resolves to a real intent. |
+| Redaction test | The GitHub token pattern required 36+ characters and the Google key pattern an exact length, so near-miss keys passed through unredacted. |
+| Browser check | The root `.env` never reached Next, whose cwd is `apps/web` — the documented setup silently ran with no `APP_SECRET`. |
+| Browser check | A Server Component passed a render function to a Client Component, producing a 500 on the settings page. |
+| CI, clean-install job | `brain connectors` required an account to print the connector registry, so someone evaluating the project could not see what the integrations do until after signing up. |
+| CI, clean-install job | `brain connectors \| head -5` crashed with an unhandled EPIPE. A command that had done its job looked like it had crashed. |
+
 ## Not executed
 
 ### Docker
