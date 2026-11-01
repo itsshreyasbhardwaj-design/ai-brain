@@ -31,7 +31,7 @@ jobs:
       # The version comes from `packageManager` in package.json.
       - uses: pnpm/action-setup@v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node }}
           cache: pnpm
@@ -58,7 +58,7 @@ jobs:
       # The version comes from `packageManager` in package.json.
       - uses: pnpm/action-setup@v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '24.x'
           cache: pnpm
@@ -82,7 +82,7 @@ jobs:
       # The version comes from `packageManager` in package.json.
       - uses: pnpm/action-setup@v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '24.x'
           cache: pnpm
@@ -126,7 +126,7 @@ jobs:
       # The version comes from `packageManager` in package.json.
       - uses: pnpm/action-setup@v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '24.x'
           cache: pnpm
